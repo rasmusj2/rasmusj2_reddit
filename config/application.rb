@@ -38,5 +38,8 @@ module Rasmusj2Reddit
 
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
+
+    config.secret_token = 'f9c2fd08d0c3098490641cc394ba204ac01e77a392c16d2519b4983daa91d1ce8372b3ebd13881b9a75007fddb182f160eef3d4fe0bacf44facd0fa210c433e2'
+
   end
 end
