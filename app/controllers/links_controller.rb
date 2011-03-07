@@ -3,28 +3,14 @@ before_filter :authenticate_user!, :except => :index
 
   def index
     @links = Link.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml { render :xml => @links }
-      format.json { render :json => @links }
-    end
   end
 
   def show
     @link = Link.find(params[:id])
-
-    respond_to do |format|
-      format.html # index.html.erb
-    end
   end
 
   def new
     @link = Link.new
-
-    respond_to do |format|
-      format.html # index.html.erb
-    end
   end
 
   def create
@@ -39,4 +25,5 @@ before_filter :authenticate_user!, :except => :index
       end
     end
   end
+
 end
