@@ -33,7 +33,7 @@ before_filter :authenticate_user!, :except => :index
 
     respond_to do |format|
       if @link.save!
-        format.html { redirect_to(links_path_url, :notice => 'Link was successfully added.') }
+        format.html { redirect_to(links_path, :notice => 'Link was successfully added.') }
       else
         format.html { render :action => "new" }
       end
