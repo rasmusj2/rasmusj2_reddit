@@ -7,9 +7,7 @@ class Link < ActiveRecord::Base
   validates :url, :presence => true
 
   def self.ordered_by_votes
-    joins('left outer join votes on links.id = votes.link_id')
-      .group('links.id, links.url, links.title, links.description, links.user_id, links.created_at, links.updated_at')
-      .order('sum(coalesce(votes.score, 0)) desc')
+    joins('left outer join votes on links.id = votes.link_id').group('links.id, links.url, links.title, links.description, links.user_id, links.created_at, links.updated_at').order('sum(coalesce(votes.score, 0)) desc')
   end
 
   def vote_total
