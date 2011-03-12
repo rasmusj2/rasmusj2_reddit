@@ -1,18 +1,21 @@
   <h2>Links Index</h2>
-<table id="links_table">
-  <% @links.each do |l| %>
-    <tr>
-      <p>
-        <strong>
-          <%= link_to l.title, l.url %><br>
-          <%= l.description %>
-        </strong>
-      </p>
-      <p>  
-        Submitted <%= time_ago_in_words(l.created_at, Time.now) %> ago
-      </p>
-    </tr>
-  <% end %>
-</table>
+  <table id="links_table">
+    <% @links.each do |l| %>
+      <tr>       
+          <%= pluralize(l.vote_total, 'vote') %>
+          <%= link_to image_tag('add.png', :alt => 'Vote Up'), vote_link_path(l, 'up'), :method => :post %>
+          <%= link_to image_tag('delete.png', :alt => 'Vote Down'), vote_link_path(l, 'down'), :method => :post %>
+        <p>
+           <strong>
+            <%= link_to l.title, l.url %><br>
+            <%= l.description %>
+          </strong>
+        </p>
+        <p>  
+          Submitted <%= time_ago_in_words(l.created_at, Time.now) %> ago
+        </p>
+      </tr>
+    <% end %>
+  </table>
 
   <div id="submit-link"><%= link_to "Submit a Link", new_link_path %></div>

@@ -1,7 +1,12 @@
 Rasmusj2Reddit::Application.routes.draw do
   devise_for :users
 
-  resources :users, :links
+ # member - add additional route 
+ resources :links do
+    member do
+      post 'vote/:type' => 'links#vote', :as => :vote
+    end
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
